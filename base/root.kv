@@ -1,0 +1,33 @@
+
+<PKOSRoot>:
+  
+  BoxLayout:
+    pos: root.pos
+    size_hint: (None, None)
+    size: root.size
+
+    orientation: 'vertical' 
+    padding: [spacer]
+    spacing: spacer
+
+    canvas.before:
+      PushMatrix:
+      Color:
+        rgba: bg_dark
+      Rectangle:
+        pos: self.pos
+        size: self.size
+      PopMatrix:
+
+
+    ContextTabRow:
+      size_hint: (1, .03)
+
+
+    ContextView:
+      id: context_view
+      size_hint: (1, .95)
+
+      # canvas.before:
+      #   PushMatrix:
+      #   Color:

@@ -1,0 +1,42 @@
+
+
+<ContextTab>:
+  color: font_dark
+  font_size: '12sp'
+  text: 'test text'
+  padding: [ 10, 4 ]
+  size_hint: (None, None)
+  size: self.texture_size
+
+  canvas.before:
+    PushMatrix:
+    Color:
+      rgba: unselected
+    Rectangle:
+      pos: self.pos
+      size: self.size
+    PopMatrix:
+
+
+
+<ContextTabRow>:
+  spacing: spacer
+
+  canvas.before:
+    PushMatrix:
+    Color:
+      rgba: bg_light
+    Rectangle:
+      pos: self.pos
+      size: self.size
+    PopMatrix:
+
+
+  ContextTab:
+  ContextTab:
+  ContextTab:
+
+
+
+<ContextView>:
+
