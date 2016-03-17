@@ -1,6 +1,20 @@
+from kivy.uix.behaviors.button import ButtonBehavior
+from kivy.uix.label import Label
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ListProperty
-from pkas.uix import Interactive, load_kv, PKButton, Selector
+from pkas.uix import Interactive, load_kv, Selector
+
+
+class PKButton(Interactive, ButtonBehavior, Label):
+  
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
+
+
+  def on_delve(self, app):
+    self.dispatch('on_press')
+
 
 load_kv('base', 'menu.kv')
 
@@ -26,3 +40,5 @@ class MenuDialog(BoxLayout, Interactive):
 
   def on_inactive(self, app):
     app.controller.focus = None
+
+    

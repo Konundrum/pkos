@@ -1,5 +1,4 @@
-#pkos
+#PKOS
 
-Personal Knowledge Management System
-
+Personal Knowledge Organization System
 
