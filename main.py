@@ -32,7 +32,6 @@ class PKOS(PKApp):
 
 
 
-
 if __name__ == '__main__':
   app = PKOS()
   app.run()

@@ -1,12 +1,13 @@
 
-
 <ContextTab>:
   color: font_dark
   font_size: '12sp'
-  text: 'test text'
+  text: 'name: ' + self.model.name if self.model else ''
   padding: [ 10, 4 ]
   size_hint: (None, None)
   size: self.texture_size
+
+  on_press: self.parent.data.remove(self.model)
 
   canvas.before:
     PushMatrix:
@@ -20,6 +21,8 @@
 
 
 <ContextTabRow>:
+  # orientation: 'horizontal'
+
   spacing: spacer
 
   canvas.before:
@@ -30,11 +33,6 @@
       pos: self.pos
       size: self.size
     PopMatrix:
-
-
-  ContextTab:
-  ContextTab:
-  ContextTab:
 
 
 

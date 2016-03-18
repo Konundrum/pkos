@@ -1,17 +1,19 @@
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
-from pkas.ui import Interactive, load_kv
+
+from pkas.data import factory, specify
+from pkas.ui import load_kv, Interactive, DataView
+
 from base.ui import PKButton
+
 
 load_kv('base', 'context.kv')
 
 
 
-# TODO: Adapter Pattern for ContextTabs
-#  (using factory / recycler)
 
-
+@specify
 class ContextTab(PKButton):
   pass
   # def __init__(self, **kwargs):
@@ -20,10 +22,21 @@ class ContextTab(PKButton):
 
 
 
-class ContextTabRow(BoxLayout):
-  pass  
-  # def __init__(self, **kwargs):
-  #   super().__init__(**kwargs)
+class ContextTabRow(DataView, BoxLayout):
+
+  data_widget = ContextTab
+
+
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
+    
+    make = factory.make
+    l = make('DataList')
+    for i in range(10):
+      l.append(make('DataContext', name=str(i)))
+
+    self.data = l
+    print(l)
 
 
 
@@ -32,3 +45,4 @@ class ContextView(Interactive, RelativeLayout):
   pass  
   # def __init__(self, **kwargs):
   #   super().__init__(**kwargs)
+
