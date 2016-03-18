@@ -1,6 +1,6 @@
 from kivy.properties import DictProperty
 from kivy.uix.floatlayout import FloatLayout
-from pkas.uix import Interactive, load_kv
+from pkas.ui import Interactive, load_kv
 from base.menu import MenuDialog
 import base.context
 
@@ -17,15 +17,15 @@ class PKOSRoot(Interactive, FloatLayout):
   #   super().__init__(**kwargs)
 
 
-  def on_active(self, app):
+  def on_active(self, controller):
     self.menu = MenuDialog()
 
 
 
-  def on_toggle_menu(self, app):
+  def on_toggle_menu(self, controller):
     if self.menu in self.children:
       self.remove_widget(self.menu)
-      app.controller.region = self.ids.context_view
+      controller.region = self.ids.context_view
     else:
       self.add_widget(self.menu)
-      app.controller.region = self.menu
+      controller.region = self.menu

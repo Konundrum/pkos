@@ -1,7 +1,8 @@
 from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
-from pkas.uix import Interactive, PKButton, load_kv
+from pkas.ui import Interactive, load_kv
+from base.ui import PKButton
 
 load_kv('base', 'context.kv')
 
