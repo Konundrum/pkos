@@ -2,27 +2,27 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ListProperty
 from pkas.ui import Interactive, load_kv, Walker
 
-
 load_kv('base', 'menu.kv')
+
 
 
 class MenuDialog(BoxLayout, Interactive):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self.walker = Walker(widgets=self.children)
+    self.walker = Walker(list=self.children)
 
 
   def on_up(self, controller):
-    controller.focus = self.walker.forward()
+    controller.focus = self.walker.inc()
 
 
   def on_down(self, controller):
-    controller.focus = self.walker.backward()
+    controller.focus = self.walker.dec()
 
 
   def on_active(self, controller):
-    controller.focus = self.walker.widget
+    controller.focus = self.walker.current
 
 
   def on_inactive(self, controller):

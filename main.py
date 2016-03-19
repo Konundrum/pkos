@@ -29,8 +29,13 @@ class PKOS(PKApp):
       'ascend': '["q", "shift enter"]',
       'toggle_menu' : '["escape"]',
 
-      'tab' : '["tab"]',
-      'untab' : '["ctrl tab"]'
+      'tab' : '["ctrl tab", "ctrl pagedown"]',
+      'untab' : '["ctrl shift tab", "ctrl pageup"]',
+      'close_tab' : '["ctrl w"]',
+      'new_tab' : '["ctrl t"]',
+      'shift_up' : '["ctrl shift pageup"]',
+      'shift_down' : '["ctrl shift pagedown"]',
+
     })
 
 

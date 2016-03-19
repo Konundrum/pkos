@@ -2,17 +2,17 @@
 <ContextTab>:
   color: font_dark
   font_size: '12sp'
-  text: 'name: ' + self.model.name if self.model else ''
+  text: 'tab #' + self.model.name if self.model else ''
   padding: [ 12, 2 ]
   size_hint: (None, None)
   size: self.texture_size
 
-  on_press: self.parent.data_list.remove(self.model)
+  on_press: self.parent.collection.remove(self.model)
 
   canvas.before:
     PushMatrix:
     Color:
-      rgba: inactive
+      rgba: active if (self.model and self.model.is_selected) else inactive
     Rectangle:
       pos: self.pos
       size: self.size
