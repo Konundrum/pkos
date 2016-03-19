@@ -23,11 +23,14 @@ class PKOS(PKApp):
       'right': '["d", "right"]',
       'up': '["w", "up"]',
       'down': '["s", "down"]',
-      'toggle_overlay': '["q"]',
-      'select': '["e"]',
-      'delve': '["space", "enter"]',
-      'ascend': '["shift + space", "shift + enter"]',
+      'toggle_overlay': '["`"]',
+      'select': '["space"]',
+      'delve': '["e", "enter"]',
+      'ascend': '["q", "shift enter"]',
       'toggle_menu' : '["escape"]',
+
+      'tab' : '["tab"]',
+      'untab' : '["ctrl tab"]'
     })
 
 

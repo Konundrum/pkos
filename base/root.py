@@ -1,4 +1,3 @@
-from kivy.properties import DictProperty
 from kivy.uix.floatlayout import FloatLayout
 from pkas.ui import Interactive, load_kv
 from base.menu import MenuDialog
@@ -9,12 +8,6 @@ load_kv('base', 'root.kv')
 
 
 class PKOSRoot(Interactive, FloatLayout):
-  context = DictProperty()
-  contexts = DictProperty()
-
-
-  # def __init__(self, **kwargs):
-  #   super().__init__(**kwargs)
 
 
   def on_active(self, controller):

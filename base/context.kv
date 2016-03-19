@@ -3,19 +3,22 @@
   color: font_dark
   font_size: '12sp'
   text: 'name: ' + self.model.name if self.model else ''
-  padding: [ 10, 4 ]
+  padding: [ 12, 2 ]
   size_hint: (None, None)
   size: self.texture_size
 
-  on_press: self.parent.data.remove(self.model)
+  on_press: self.parent.data_list.remove(self.model)
 
   canvas.before:
     PushMatrix:
     Color:
-      rgba: unselected
+      rgba: inactive
     Rectangle:
       pos: self.pos
       size: self.size
+    Line:
+      width: 1.0
+      points: self.x,self.y,self.x,self.top,self.right,self.top,self.right,self.y
     PopMatrix:
 
 
@@ -23,7 +26,7 @@
 <ContextTabRow>:
   # orientation: 'horizontal'
 
-  spacing: spacer
+  spacing: space_l
 
   canvas.before:
     PushMatrix:
@@ -37,4 +40,8 @@
 
 
 <ContextView>:
-
+  TextInput:
+    text: 'hello'
+    background_color: bg_dark
+    foreground_color: font_light
+    cursor_color: font_light

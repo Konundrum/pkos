@@ -7,8 +7,8 @@
     size: root.size
 
     orientation: 'vertical' 
-    padding: [spacer]
-    spacing: spacer
+    padding: [space_s]
+    spacing: space_s
 
     canvas.before:
       PushMatrix:
@@ -21,14 +21,11 @@
 
 
     ContextTabRow:
+      id: context_tabs
       size_hint: (1, .03)
 
 
     ContextView:
       id: context_view
       size_hint: (1, .95)
-
-      # canvas.before:
-      #   PushMatrix:
-      #   Color:
 

@@ -10,19 +10,19 @@ class MenuDialog(BoxLayout, Interactive):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self.walker = Walker(self.children)
+    self.walker = Walker(widgets=self.children)
 
 
   def on_up(self, controller):
-    controller.focus = self.walker.increment()
+    controller.focus = self.walker.forward()
 
 
   def on_down(self, controller):
-    controller.focus = self.walker.decrement()
+    controller.focus = self.walker.backward()
 
 
   def on_active(self, controller):
-    controller.focus = self.walker.position
+    controller.focus = self.walker.widget
 
 
   def on_inactive(self, controller):

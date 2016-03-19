@@ -16,8 +16,6 @@ load_kv('base', 'context.kv')
 @specify
 class ContextTab(PKButton):
   pass
-  # def __init__(self, **kwargs):
-  #   super().__init__(**kwargs)
     
 
 
@@ -35,14 +33,11 @@ class ContextTabRow(DataView, BoxLayout):
     for i in range(10):
       l.append(make('DataContext', name=str(i)))
 
-    self.data = l
-    print(l)
+    self.data_list = l
 
 
 
 
 class ContextView(Interactive, RelativeLayout):
   pass  
-  # def __init__(self, **kwargs):
-  #   super().__init__(**kwargs)
 

@@ -3,7 +3,7 @@
   canvas.before:
     PushMatrix:
     Color:
-      rgba: selected if self.is_active else unselected
+      rgba: active if self.is_active else inactive
     Rectangle:
       pos: self.pos
       size: self.size
