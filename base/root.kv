@@ -1,16 +1,12 @@
 
 <PKOSRoot>:
-  
   BoxLayout:
-    pos: root.pos
-    size_hint: (None, None)
-    size: root.size
-
     orientation: 'vertical' 
-    padding: [space_s]
-    spacing: space_s
+    pos: root.pos
+    size: root.size
+    size_hint: (None, None)
 
-    canvas.before:
+    canvas:
       PushMatrix:
       Color:
         rgba: bg_dark

@@ -7,11 +7,10 @@ from base.root import PKOSRoot
 
 
 class PKOS(PKApp):
-  
+
 
   def build(self):
     return PKOSRoot()
-    
     
     
   def build_config(self, config):

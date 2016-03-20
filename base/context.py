@@ -20,20 +20,10 @@ class ContextTab(PKButton):
 
 
 
-# class ContextTabRow(DataView, BoxLayout):
 from pkas.ui import RecycleView
 
 
-
 class ContextTabRow(RecycleView, BoxLayout):
-
-
-  def gen_data(self):
-    return iter(self.data)
-
-
-
-
 
   selected = SelectorProperty()
 
@@ -41,36 +31,28 @@ class ContextTabRow(RecycleView, BoxLayout):
   def __init__(self, **kwargs):
     super().__init__(cls=ContextTab, **kwargs)
     self.data = factory.make('DataList')
-    self.walker = Walker(list=self.data)
+    self.walker = Walker(data=self.data)
 
 
   def next(self):
-    context = self.walker.inc()
-    self.selected = context
-    return context
+    self.selected = self.walker.inc()
 
 
   def prev(self):
-    context = self.walker.dec()
-    self.selected = context
-    return context
+    self.selected = self.walker.dec()
 
 
-  def close_tab(self):
-    if len(self.data) > 0:
-      del self.data[self.walker.index]
-      context = self.walker.dec()
-      self.selected = context
-      return context
-    return self.walker.current
-
-
-  def shift_down(self):
-    c = self.data
-    i = self.walker.index
-    if i < (len(c) - 1):
-      c.swap(i, i+1)
-      self.walker.index += 1
+  def close_tab(self, tab=None):
+    if tab:
+      i = self.child_index(tab)
+    elif len(self.data) > 0:
+      i = self.walker.index
+    else:
+      return
+  
+    del self.data[i]
+    self.selected = self.walker.current
+    
 
 
   def shift_up(self):
@@ -81,16 +63,21 @@ class ContextTabRow(RecycleView, BoxLayout):
       self.walker.index -= 1
 
 
+  def shift_down(self):
+    c = self.data
+    i = self.walker.index
+    if i < (len(c) - 1):
+      c.swap(i, i+1)
+      self.walker.index += 1
+
+
   tab_num = 0
   def new_tab(self):
-    context = factory.make('DataContext', name=str(self.tab_num))
+    self.data.insert(self.walker.index + 1,
+        factory.make('DataContext', name=str(self.tab_num)))
+    self.selected = self.walker.inc()
+    print('new tab', self.selected)
     self.tab_num += 1
-    i = self.walker.index
-    self.data.insert(i + 1, context)
-    self.selected = context
-    self.walker.current = context
-    print('adding to data:', id(self.data))
-    return context
 
 
 

@@ -12,7 +12,7 @@ class MenuDialog(BoxLayout, Interactive):
 
   def __init__(self, **kwargs):
     super().__init__(**kwargs)
-    self.walker = Walker(list=self.children)
+    self.walker = Walker(data=self.children)
 
 
   def on_up(self, controller):

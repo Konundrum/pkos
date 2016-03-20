@@ -12,10 +12,6 @@ load_kv('base', 'root.kv')
 
 class PKOSRoot(Interactive, FloatLayout):
 
-
-  context = ObjectProperty(None, allownone=True)
-
-
   def on_active(self, controller):
     self.menu = MenuDialog()
 
@@ -30,19 +26,19 @@ class PKOSRoot(Interactive, FloatLayout):
 
 
   def on_tab(self, controller):
-    self.context = self.ids.tabs.next()
+    self.ids.tabs.next()
 
 
   def on_untab(self, controller):
-    self.context = self.ids.tabs.prev()
+    self.ids.tabs.prev()
 
 
   def on_close_tab(self, controller):
-    self.context = self.ids.tabs.close_tab()
+    self.ids.tabs.close_tab()
 
 
   def on_new_tab(self, controller):
-    self.context = self.ids.tabs.new_tab()
+    self.ids.tabs.new_tab()
     
 
   def on_shift_up(self, controller):

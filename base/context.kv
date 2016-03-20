@@ -1,34 +1,34 @@
 
 <ContextTab>:
-  color: font_dark
+  color: font_gold if self.model and self.model.is_selected else font_dark
   font_size: '12sp'
-  text: 'tab #' + self.model.name if self.model else ''
-  padding: [ 12, 2 ]
-  size_hint: (None, None)
-  size: self.texture_size
+  padding: [space_l, space_m]
 
-  on_press: self.parent.collection.remove(self.model)
+  size: self.texture_size
+  size_hint: (None, None)
+  text: 'tab #' + self.model.name if self.model else ''
 
   canvas.before:
     PushMatrix:
     Color:
-      rgba: active if (self.model and self.model.is_selected) else inactive
+      rgba: active if self.model and self.model.is_selected else inactive
     Rectangle:
       pos: self.pos
       size: self.size
     Line:
-      width: 1.0
+      width: 3.0
       points: self.x,self.y,self.x,self.top,self.right,self.top,self.right,self.y
     PopMatrix:
+
+  on_press: self.parent.close_tab(self)
 
 
 
 <ContextTabRow>:
-  # orientation: 'horizontal'
-
+  padding: [space_m, 0]
   spacing: space_l
 
-  canvas.before:
+  canvas:
     PushMatrix:
     Color:
       rgba: bg_light
@@ -40,8 +40,19 @@
 
 
 <ContextView>:
+  canvas:
+    PushMatrix:
+    Color:
+      rgba: black
+    Rectangle:
+      pos: self.pos
+      size: self.size
+    PopMatrix:
+
+
   TextInput:
-    text: 'hello'
     background_color: bg_dark
-    foreground_color: font_light
     cursor_color: font_light
+    foreground_color: font_light
+    text: 'hello'
+
