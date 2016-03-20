@@ -20,7 +20,20 @@ class ContextTab(PKButton):
 
 
 
-class ContextTabRow(DataView, BoxLayout):
+# class ContextTabRow(DataView, BoxLayout):
+from pkas.ui import RecycleView
+
+
+
+class ContextTabRow(RecycleView, BoxLayout):
+
+
+  def gen_data(self):
+    return iter(self.data)
+
+
+
+
 
   selected = SelectorProperty()
 
@@ -46,7 +59,7 @@ class ContextTabRow(DataView, BoxLayout):
   def close_tab(self):
     if len(self.data) > 0:
       del self.data[self.walker.index]
-      context = self.walker.current
+      context = self.walker.dec()
       self.selected = context
       return context
     return self.walker.current
@@ -76,6 +89,7 @@ class ContextTabRow(DataView, BoxLayout):
     self.data.insert(i + 1, context)
     self.selected = context
     self.walker.current = context
+    print('adding to data:', id(self.data))
     return context
 
 

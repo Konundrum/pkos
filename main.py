@@ -7,10 +7,7 @@ from base.root import PKOSRoot
 
 
 class PKOS(PKApp):
-  def __init__(self, **kwargs):
-    super().__init__(**kwargs)
   
-
 
   def build(self):
     return PKOSRoot()
