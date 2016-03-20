@@ -1,7 +1,7 @@
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import ObjectProperty
 
-from pkas.ui import Interactive, load_kv, Walker
+from pkas.ui import Interactive, load_kv
 from base.menu import MenuDialog
 import base.context
 
