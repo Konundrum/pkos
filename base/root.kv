@@ -1,27 +1,27 @@
 
 <PKOSRoot>:
-  BoxLayout:
-    orientation: 'vertical' 
-    pos: root.pos
-    size: root.size
-    size_hint: (None, None)
+    BoxLayout:
+        orientation: 'vertical'
+        pos: root.pos
+        size: root.size
+        size_hint: (None, None)
 
-    canvas:
-      PushMatrix:
-      Color:
-        rgba: bg_dark
-      Rectangle:
-        pos: self.pos
-        size: self.size
-      PopMatrix:
-
-
-    ContextTabRow:
-      id: tabs
-      size_hint: (1, .03)
+        canvas:
+            PushMatrix:
+            Color:
+                rgba: bg_dark
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            PopMatrix:
 
 
-    ContextView:
-      id: view
-      size_hint: (1, .95)
+        ContextTabRow:
+            id: tabs
+            size_hint: (1, .03)
+
+
+        ContextView:
+            id: view
+            size_hint: (1, .95)
 
