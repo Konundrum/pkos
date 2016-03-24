@@ -1,6 +1,6 @@
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ListProperty
-from pkas.ui import Interactive, Walker, load_kv
+from pkas import Interactive, Walker, load_kv
 
 
 load_kv('base', 'menu.kv')

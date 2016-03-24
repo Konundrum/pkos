@@ -1,7 +1,7 @@
 from kivy.config import Config
 Config.set('kivy', 'exit_on_escape', 0)
 
-from pkas.app import PKApp
+from pkas import PKApp
 from base.root import PKOSRoot
 
 
@@ -26,7 +26,7 @@ class PKOS(PKApp):
             'untab' : '["ctrl shift tab", "ctrl pageup"]',
             'close_tab' : '["ctrl w"]',
             'new_tab' : '["ctrl t"]',
-            'shift_up' : '["ctrl shift pgeuap"]',
+            'shift_up' : '["ctrl shift pageup"]',
             'shift_down' : '["ctrl shift pagedown"]'
         })
 
@@ -34,3 +34,4 @@ class PKOS(PKApp):
 if __name__ == '__main__':
     app = PKOS()
     app.run()
+

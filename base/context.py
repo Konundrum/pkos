@@ -2,8 +2,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.relativelayout import RelativeLayout
 
-from pkas.data import factory, specify, SelectorProperty
-from pkas.ui import load_kv, Interactive, DataView, RecyclerView, Walker
+from pkas import *
 from base.ui import PKButton
 
 
@@ -14,28 +13,21 @@ load_kv('base', 'context.kv')
 
 @specify
 class ContextTab(PKButton):
-
-    defaultmodel = factory.make('DataContext')
-
+    model = DataProperty(factory.make('DataContext'))
 
 
 
 class ContextTabRow(RecyclerView, BoxLayout):
-
-
     selected = SelectorProperty(allownone=True)
-
 
     def __init__(self, **kwargs):
         super().__init__(cls=ContextTab, **kwargs)
-        self.walker = Walker()
         self.data = factory.make('DataList')
-        self.walker.data = self.data
+        self.walker = Walker(data=self.data)
 
 
     def next(self):
         self.selected = self.walker.inc()
-
 
     def prev(self):
         self.selected = self.walker.dec()
@@ -51,7 +43,6 @@ class ContextTabRow(RecyclerView, BoxLayout):
 
         del self.data[i]
         self.selected = self.walker.current
-
 
 
     def shift_up(self):
