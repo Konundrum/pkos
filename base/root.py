@@ -14,6 +14,13 @@ class PKOSRoot(Interactive, FloatLayout):
 
     def on_active(self, controller):
         self.menu = MenuDialog()
+        self.tabs = self.ids.tabs
+        self.bound_uid = self.tabs.fbind('selected',
+            lambda p,f: setattr(controller, 'file', f))
+
+
+    def on_inactive(self, controller):
+        self.tabs.unbind_uid('selected', self.bound_uid)
 
 
     def on_toggle_menu(self, controller):
@@ -26,24 +33,24 @@ class PKOSRoot(Interactive, FloatLayout):
 
 
     def on_tab(self, controller):
-        self.ids.tabs.next()
-
+        self.tabs.next()
 
     def on_untab(self, controller):
-        self.ids.tabs.prev()
-
+        self.tabs.prev()
 
     def on_close_tab(self, controller):
-        self.ids.tabs.close_tab()
+        self.tabs.close_tab()
 
 
     def on_new_tab(self, controller):
-        self.ids.tabs.new_tab()
+        self.tabs.new_tab()
 
 
     def on_shift_up(self, controller):
-        self.ids.tabs.shift_up()
+        self.tabs.shift_up()
 
     def on_shift_down(self, controller):
-        self.ids.tabs.shift_down()
+        self.tabs.shift_down()
 
+    def on_save(self, controller):
+        controller.file.save()

@@ -13,7 +13,7 @@ load_kv('base', 'context.kv')
 
 @specify
 class ContextTab(PKButton):
-    model = DataProperty(factory.make('DataContext'))
+    model = DataProperty(factory.make('FileContext'))
 
 
 
@@ -64,7 +64,10 @@ class ContextTabRow(RecyclerView, BoxLayout):
     tab_num = 0
     def new_tab(self):
         self.data.insert(self.walker.index + 1,
-                factory.make('DataContext', name=str(self.tab_num)))
+                factory.make('FileContext',
+                             name=str(self.tab_num),
+                             filename='my_file.pkm',
+                             data=dict(a=factory.make('DataModel'))))
         self.selected = self.walker.inc()
         self.tab_num += 1
 

@@ -16,18 +16,18 @@ class PKOS(PKApp):
             'right': '["d", "right"]',
             'up': '["w", "up"]',
             'down': '["s", "down"]',
-            'toggle_overlay': '["`"]',
-            'select': '["space"]',
+            'toggle_overlay': '"`"',
+            'select': '"space"',
             'delve': '["e", "enter"]',
             'ascend': '["q", "shift enter"]',
-            'toggle_menu' : '["escape"]',
-
+            'toggle_menu' : '"escape"',
             'tab' : '["ctrl tab", "ctrl pagedown"]',
             'untab' : '["ctrl shift tab", "ctrl pageup"]',
-            'close_tab' : '["ctrl w"]',
-            'new_tab' : '["ctrl t"]',
+            'close_tab' : '"ctrl w"',
+            'new_tab' : '"ctrl t"',
             'shift_up' : '["ctrl shift pageup"]',
-            'shift_down' : '["ctrl shift pagedown"]'
+            'shift_down' : '["ctrl shift pagedown"]',
+            'save' : '"ctrl s"'
         })
 
 
