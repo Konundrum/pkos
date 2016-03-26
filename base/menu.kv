@@ -23,7 +23,9 @@
 
   MenuButton:
     text: 'Save'
-    on_press: app.controller.file.save()
+    on_press:
+      app.controller.file.save()
+      app.root.on_toggle_menu(app.controller)
 
   MenuButton:
     text: 'Load'

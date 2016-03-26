@@ -17,13 +17,16 @@ class ContextTab(PKButton):
 
 
 
-class ContextTabRow(RecyclerView, BoxLayout):
+class ContextTabRow(ListView, BoxLayout):
+
     selected = SelectorProperty(allownone=True)
+
 
     def __init__(self, **kwargs):
         super().__init__(cls=ContextTab, **kwargs)
         self.data = factory.make('DataList')
         self.walker = Walker(data=self.data)
+        # print('tabrow Ctor:', self._data_uids)
 
 
     def next(self):
@@ -34,6 +37,7 @@ class ContextTabRow(RecyclerView, BoxLayout):
 
 
     def close_tab(self, tab=None):
+        print('closing tab', self.data.data, '\n', self.displayed.data)
         if tab:
             i = self.get_child_index(tab)
         elif len(self.data) > 0:
@@ -43,6 +47,7 @@ class ContextTabRow(RecyclerView, BoxLayout):
 
         del self.data[i]
         self.selected = self.walker.current
+        print('closed tab', self.data.data, '\n', self.displayed.data)
 
 
     def shift_up(self):
@@ -63,6 +68,7 @@ class ContextTabRow(RecyclerView, BoxLayout):
 
     tab_num = 0
     def new_tab(self):
+        print('opening tab', self.data.data, '\n', self.displayed.data)
         self.data.insert(self.walker.index + 1,
                 factory.make('FileContext',
                              name=str(self.tab_num),
@@ -70,6 +76,7 @@ class ContextTabRow(RecyclerView, BoxLayout):
                              data=dict(a=factory.make('DataModel'))))
         self.selected = self.walker.inc()
         self.tab_num += 1
+        print('opened tab', self.data.data, '\n', self.displayed.data)
 
 
 
