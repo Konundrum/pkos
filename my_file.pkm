@@ -1,7 +1,6 @@
 json
 {
 "a" : {
-  "__class__" : "DataModel",
-  "is_selected" : False  },
-"name" : "3"
+  "__class__" : "DataModel"  },
+"name" : "40"
 }

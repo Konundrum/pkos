@@ -1,0 +1,126 @@
+
+<PKOSRoot>:
+    BoxLayout:
+        orientation: 'vertical'
+        pos: root.pos
+        # pos: root.pos[0] - 20, root.pos[1] + 20
+        size: root.size
+        size_hint: (None, None)
+
+        canvas:
+            PushMatrix:
+            Color:
+                rgba: bg_dark
+            Rectangle:
+                pos: self.pos
+                size: self.size
+            PopMatrix:
+
+
+        ContextTabRow:
+            id: tabs
+            size_hint: (1, None)
+            size: 0, 25
+
+
+        ContextView:
+            id: view
+            # size_hint: (1, 1)
+
+
+
+<ContextTab>:
+    color: font_gold if self.model.is_selected else font_dark
+    font_size: '12sp'
+    padding: space_l, space_m
+
+    size: self.texture_size
+    size_hint: None, None
+    text: 'tab #' + self.model.name
+
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: active if self.model.is_selected else inactive
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        Line:
+            width: 3.0
+            points: self.x,self.y, self.x,self.top, self.right,self.top, self.right,self.y
+        PopMatrix:
+
+    on_press: self.parent.close_tab(self)
+
+
+
+<ContextTabRow>:
+    padding: space_m, 0
+    spacing: space_l
+
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: bg_light
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        PopMatrix:
+
+
+
+<ContextView>:
+    canvas:
+        PushMatrix:
+        Color:
+            rgba: black
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        PopMatrix:
+
+
+    TextInput:
+        background_color: bg_dark
+        cursor_color: font_light
+        foreground_color: font_light
+        text: 'hello'
+
+
+
+<MenuButton@PKButton>:
+    canvas.before:
+        PushMatrix:
+        Color:
+            rgba: active if self.is_active else inactive
+        Rectangle:
+            pos: self.pos
+            size: self.size
+        PopMatrix:
+
+
+
+<MenuDialog>:
+    size_hint: None, None
+    size: 300, 300
+    pos_hint: {'center_x': .5, 'center_y': .5 }
+    orientation: 'vertical'
+
+    MenuButton:
+        text: 'New'
+        on_press: True
+
+    MenuButton:
+        text: 'Save'
+        on_press:
+            app.controller.file.save()
+            app.root.on_toggle_menu(app.controller)
+
+    MenuButton:
+        text: 'Load'
+        on_press: True
+
+    MenuButton:
+        text: 'Quit'
+        on_press: app.stop()
+
