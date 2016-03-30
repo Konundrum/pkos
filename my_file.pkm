@@ -1,6 +1,6 @@
-json
+pkas:mode=json
 {
 "a" : {
   "__class__" : "DataModel"  },
-"name" : "40"
+"name" : "5"
 }

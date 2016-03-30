@@ -21,14 +21,15 @@ class PKOS(PKApp):
             'delve': '["e", "enter"]',
             'ascend': '["q", "shift enter"]',
             'toggle_menu' : '"escape"',
+
             'tab' : '["ctrl tab", "ctrl pagedown"]',
             'untab' : '["ctrl shift tab", "ctrl pageup"]',
+
             'close_tab' : '"ctrl w"',
             'new_tab' : '"ctrl t"',
+            'save' : '"ctrl s"',
             'shift_up' : '["ctrl shift pageup"]',
             'shift_down' : '["ctrl shift pagedown"]',
-            'save' : '"ctrl s"',
-
             'tabs_right' : '"ctrl right"',
             'tabs_left' : '"ctrl left"'
 
